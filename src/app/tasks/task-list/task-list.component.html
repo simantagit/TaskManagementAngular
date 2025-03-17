@@ -1,1 +1,28 @@
-<p>task-list works!</p>
+<app-task-add [action]="this.action" [data]="this.row"></app-task-add>
+<button type="button" *ngIf="this.action=='Edit'" class="btn btn-primary" (click)="addRow()">Add Task</button>
+<br>
+<br>
+<br>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tasks">
+        <th scope="row">1</th>
+        <td>{{t.name}}</td>
+        <td>{{t.description.length>10 ? t.description.substring(0,10)+'.....': t.description}}</td>
+        <td><button type="button" class="btn btn-primary" (click)="editRow(t)">Edit Task</button><button type="button" class="btn btn-danger">Delete Task</button></td>
+      </tr>
+    
+    </tbody>
+  </table>
+
+ 
+
+  
