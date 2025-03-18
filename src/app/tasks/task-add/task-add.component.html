@@ -1,10 +1,11 @@
-
+<div style="width:30%;margin-left:35%">
 <div class="register-form">
+    <span style="color:red">{{screenMsg}}</span>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <h2><b>Add Task</b></h2>
+    <h2><b>{{this.act}} Task</b></h2>
     <div class="form-group">
     <label for="name">Task Name:</label>
-    <input type="text"  formControlName="name">
+    <input type="text"  formControlName="name" [ngModel]="editRowData?.name">
     <div *ngIf="formSubmitted && f['name'].errors && f['name'].errors['required']" class="alert alert-danger">
         Name is required.
     </div>
@@ -13,10 +14,12 @@
     </div>
     </div>  
     <div class="form-group">
-    <label for="email">Task Description:</label>
-    <input type="text" id="email" formControlName="description">
+    <label for="email" style="vertical-align: top;">Task Description:</label>
+
+    <textarea cols="25" rows="3" id="email" formControlName="description" [ngModel]="editRowData?.description"></textarea>
     </div>
 
     <button type="submit" >Submit</button>
   </form>
+  </div>
   </div>
