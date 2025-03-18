@@ -15,6 +15,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  message:string=''
 loginForm: FormGroup;
   formSubmitted = false;
   constructor(private fb: FormBuilder,private http:ApiServiceService,private router:Router) {
@@ -39,8 +40,12 @@ loginForm: FormGroup;
         "password" : this.loginForm.controls['password'].value
       }
       this.http.login(data).subscribe((response: any) => {
+        this.message=response.message;
         localStorage.setItem('auth_token',response.authorisation.token);
-        this.router.navigate(['/tasks']); 
+        //setTimeout(function(this:any){
+          this.router.navigate(['/tasks']); 
+        //},1000);
+        
       });
     }
   }

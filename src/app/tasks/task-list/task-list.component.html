@@ -1,3 +1,4 @@
+<span  style="width:30%;margin-left:40%;color:red">{{screenMsg}}</span>
 <app-task-add [action]="this.action" [data]="this.row"></app-task-add>
 <button type="button" *ngIf="this.action=='Edit'" class="btn btn-primary" (click)="addRow()">Add Task</button>
 <br>
@@ -13,11 +14,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let t of tasks">
-        <th scope="row">1</th>
+      <tr *ngFor="let t of tasks; ; let i = index">
+        <th scope="row">{{i+1}}</th>
         <td>{{t.name}}</td>
         <td>{{t.description.length>10 ? t.description.substring(0,10)+'.....': t.description}}</td>
-        <td><button type="button" class="btn btn-primary" (click)="editRow(t)">Edit Task</button><button type="button" class="btn btn-danger">Delete Task</button></td>
+        <td><button type="button" class="btn btn-primary" (click)="editRow(t)">Edit Task</button> &nbsp;&nbsp;<button type="button" class="btn btn-danger" (click)="deleteRow(t.id)">Delete Task</button></td>
       </tr>
     
     </tbody>
